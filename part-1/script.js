@@ -52,4 +52,25 @@ function doStep1(init, callback) {
   }
   
   doOperation();
-  
+   
+
+// Practice
+function step1(string, callback) {
+  const result = "Hello" + string;
+  callback(result);
+}
+
+function step2(string, callback) {
+  const result = string + "world";
+  callback(result);
+}
+
+function operation() {
+  // Gets the result from the function step1 and sends it to the function step2
+  step1(" ", (result1) => {
+    // Gets the result from the function step 2 and sends it to be console logged
+    step2(result1, (result2) => {
+      console.log(`result: ${result2}`);
+    });
+  });
+}
