@@ -124,4 +124,25 @@ async function fetchProducts() {
   }
   
   fetchProducts();
-  
+   
+
+
+// practice
+async function promise() {
+  // waits for the promise to settle
+    const promise1 = await fetch(
+      "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",
+    );
+    const promise2 = await fetch(
+      "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/not-found",
+    );
+    // gets any one of the promises
+    Promise.any([promise1, promise2])
+      .then((response) => {
+        console.log(`${response.url}: ${response.status}`)
+      })
+      // throws error if found
+      .catch((error) => {
+        console.error(`:( Failed to fetch: ${error}`);
+      });
+}
